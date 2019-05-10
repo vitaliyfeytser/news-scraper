@@ -1,47 +1,63 @@
 <br />
 <div class="container">
   <div class="jumbotron">
-    <div class="row card-body">
+    <div class="row">
       <div class="col-md-12" id="header">
         <img id="logo-img" src="/lifehacker.png" alt="">
-        <button type="button" id="scrape" class="btn" >Scrape The Life Hacks</button>
+        <button type="button" id="scrape" class="btn btn-outline-success">Scrape The Life Hacks</button>
       </div>
     </div>
     <br />
-    <table style="width:100%" class="table">
-      <thead class="thead-dark">
+    <table style="width:100%" class="table table-hover table-light">
+      <thead>
         <tr>
-          <th>Title</th>
-          <th>Date</th>
-          <th>Author</th>
+          <th scope="col">Title</th>
+          <th scope="col">Date</th>
+          <th scope="col">Author</th>
         </tr>
       </thead>
-      {{#each articles}}
-        <tr class="table-light headline" >
+      <tbody>
+        {{#each articles}}
+        <tr class="table-light headline">
           <td>{{title}}</td>
           <td>{{date}}</td>
           <td>{{author}}</td>
         </tr>
-        <tr class="extended"> 
+        <tr class="extended">
           <td colspan="2">{{blurb}}</td>
-          <td><button onclick="window.open('{{link}}', '_blank');">Read</button></td>  
+          <td><button type="button" class="btn btn-outline-primary btn-sm"
+              onclick="window.open('{{link}}', '_blank');">Read</button></td>
         </tr>
         {{#each notes}}
-          <tr class="extended"> 
-            <td style="width:100%">{{body}}</td>
-            <td>{{author}}</td>
-            <td><button id={{id}} class="delete-note">Delete</button></td>
-          </tr>
-          <tr class="extended"> 
-          </tr>
+        <tr class="extended">
+          <td>{{body}}</td>
+          <td>{{author}}</td>
+          <td><button id={{id}} type="button" class="delete-note btn btn-outline-danger btn-sm">Delete</button></td>
+        </tr>
+        <tr class="extended">
+        </tr>
         {{/each}}
         <tr class="extended">
-          <td><input type="text" class="body {{_id}}" name="body" style="width:100%" placeholder="Leave us a comment.."></td>
-          <td><input type="text" class="userName {{_id}}" name="userName" placeholder="Your name"></td>
-          <td><button class="add-note {{_id}}">Submit</button></td>
+          <td><input type="text" class="body {{_id}} form-control form-control-sm" name="body"
+              placeholder="Comments are welcome"></td>
+          <td><input type="text" class="userName {{_id}} form-control form-control-sm" name="userName"
+              placeholder="Your Name"></td>
+          <td><button type="button" class="add-note {{_id}} btn btn-outline-success btn-sm">Submit</button></td>
         </tr>
+      </tbody>
       {{/each}}
     </table>
+
+    <footer class="footer">
+      <div class="container">
+        <a href="https://github.com/vitaliyfeytser" target="_blank"><img class="contact-icons" id="github-icon"
+            src="/github-sign-white.png"></a>
+        <a href="https://www.linkedin.com/in/vitaliy-feytser-50879852/" target="_blank"><img class="contact-icons"
+            id="linked-in-icon" src="/linkedin.png"></a>
+        <p class="text-muted">Designed and deployed by Vitaliy Feytser @ the UC Davis Coding Bootcamp. All rights
+          reserved.<br>vitaliyfeytser@gmail.com</p>
+      </div>
+    </footer>
+
   </div>
 </div>
-

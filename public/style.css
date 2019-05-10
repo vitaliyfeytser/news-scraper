@@ -1,16 +1,18 @@
 body {
-    background-color: #220d0d;
+    background-color: #15220d;
 
 }
 
 .jumbotron {    
-    background-color: #220d0d;
+    background-color: #15220d;
     padding: 2rem;
 }
 
 .extended {
-    background-color: #E1F3FC;
+    background-color: rgb(233, 252, 225);
+    display: none;
 }
+
 #header {
     display: flex;
     justify-content: space-between;
@@ -18,30 +20,40 @@ body {
 
 #scrape {
     color: #ffffff;
-    background-color: rgb(28, 131, 2);
-    border-radius: 1em;
+    /* background-color: rgb(28, 131, 2); */
+    border-radius: 10em;
+    font-size: 1.25em;
 
 }
+
 #scrape:hover {
     background-color: rgb(36, 172, 2);
     transform: 1.5;
 }
-
-
 
 h1 {
     display: inline;
     color: #FFFFFF;
 }
 
-#header {
-    content: inherit;
+#logo-img {
+    height: 5em;
 }
 
-
-.extended {
-    display: none;
+.contact-icons {
+    height: 2em;
+    margin: .5em;
+    opacity: .5;
 }
 
-.add-note
-.delete-note
+.contact-icons:hover {
+    /* height: 2.1em; */
+    transform: scale(1.1);
+    margin: .5em;
+    opacity: 1;
+}
+
+.footer {
+    justify-content: center;
+    text-align: center;
+}
