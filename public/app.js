@@ -45,4 +45,15 @@ $(document).ready(() => {
       url: "/notes/" + id,
     }).then(() => location.reload(true));
   });
+
+  // delete all
+  $("#empty-db").on("click", function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: "DELETE",
+      url: "/emptydb",
+    }).then(() => location.reload(true));
+  });
+
 });

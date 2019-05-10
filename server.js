@@ -61,9 +61,9 @@ app.get("/scrape", function(req, res) {
             // Save these results in an object that we'll push into the results array we defined earlier
             var results = {
                 title: title,
+                blurb: blurb,
                 link: link,
                 author: author,
-                blurb: blurb,
                 date: date,
                 note: []
             };
@@ -96,6 +96,22 @@ app.post("/articles/:id", function(req, res) {
             //Catch error
             res.json(err);
         });
+});
+
+app.delete("/emptydb", function(req, res) {
+    db.Articles.deleteMany({}, function (err) {
+        if (err) return handleError(err);
+    }).then(() => {
+        res.status(202).end();
+        // res.redirect("/");
+    });
+
+    db.Notes.deleteMany({}, function (err) {
+        if (err) return handleError(err);
+    }).then(() => {
+        res.status(202).end();
+        res.redirect("/");
+    });
 });
 
 app.delete("/notes/:id", function(req, res) {

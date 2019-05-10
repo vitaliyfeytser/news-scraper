@@ -47,7 +47,6 @@ h1 {
 }
 
 .contact-icons:hover {
-    /* height: 2.1em; */
     transform: scale(1.1);
     margin: .5em;
     opacity: 1;
