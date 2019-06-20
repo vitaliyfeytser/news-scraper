@@ -59,14 +59,16 @@ app.get("/scrape", function(req, res) {
             var author = $(element).children("div").children("div").children("span").children("div").children("a").text();
             var date = moment().format("dddd, MMMM Do YYYY", Date.now());
             // Save these results in an object that we'll push into the results array we defined earlier
+            console.log("after scrape: ", title, blurb, link, author, date)
             var results = {
-                title: title,
-                blurb: blurb,
-                link: link,
-                author: author,
-                date: date,
+                title: title ? title : "Empty Title",
+                blurb: blurb ? blurb : "Empty blurb",
+                link: link ? link : "Empty link",
+                author: author ? author : "Empty author",
+                date: date ? date : "Empty date",
                 note: []
             };
+            console.log("------------- IT BROKE OVER HERE ----------")
             db.Articles.find({title: results.title}).then(match => {
                 if (match.length === 0) {
                     db.Articles.create(results)
@@ -80,6 +82,7 @@ app.get("/scrape", function(req, res) {
             });
         });
     }).then(() => {
+        console.log("------------- IT BROKE OVER HERE ----------")
         res.redirect("/");
     });
 });
