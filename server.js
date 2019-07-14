@@ -61,10 +61,10 @@ app.get("/scrape", function(req, res) {
             // Save these results in an object that we'll push into the results array we defined earlier
             console.log("after scrape: ", title, blurb, link, author, date)
             var results = {
-                title: title ? title : "Empty Title",
+                title: title ? title : "lifehacker.com html stucture has changed",
                 blurb: blurb ? blurb : "Empty blurb",
                 link: link ? link : "Empty link",
-                author: author ? author : "Empty author",
+                author: author ? author : "please update code",
                 date: date ? date : "Empty date",
                 note: []
             };
