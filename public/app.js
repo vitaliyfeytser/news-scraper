@@ -3,16 +3,26 @@ $(document).ready(() => {
   $(".headline").on("click", function() {
     $(".extended").hide("fast");
     $(this).nextUntil(".headline").show("slow");
+
+    // $(".article").children().css("display", "none") ? $(this).nextUntil(".headline").show("slow") :  $(this).nextUntil(".headline").hide("fast")
+
+    // $(".extended").css({display: "table-row"}) ? $(this).nextUntil(".headline").hide("fast") : $(this).nextUntil(".headline").show("slow")
+
+    // $(this).nextUntil(".headline").show("slow") ? $(this).nextUntil(".headline").hide("fast") : $(this).nextUntil(".headline").show("slow") 
+
   });
 
   //scrape the site
   $("#scrape").on("click", function(event) {
     event.preventDefault();
+    // change button text while scraping
+    $("#scrape").text("Scraping... Please be patient.")
     console.log("Scraping... Please be patient.");
     $.ajax({
       method: "GET",
       url: "/scrape",
     }).then(() => location.reload(true));
+
   })
 
   // add a note

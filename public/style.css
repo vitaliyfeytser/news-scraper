@@ -5,12 +5,16 @@ body {
 
 .jumbotron {    
     background-color: #15220d;
-    padding: 2rem;
+    padding: 2em;
 }
 
 .extended {
     background-color: rgb(233, 252, 225);
     display: none;
+    color: grey;
+}
+.comments {
+    background-color: rgb(246, 253, 243);
 }
 
 #header {
@@ -20,9 +24,18 @@ body {
 
 #scrape {
     color: #ffffff;
-    /* background-color: rgb(28, 131, 2); */
     border-radius: 10em;
     font-size: 1.25em;
+    margin-bottom: .5em;
+
+}
+
+#empty-db {
+    /* color: #ffffff; */
+    /* background-color: rgb(28, 131, 2); */
+    /* border-radius: 10em; */
+    font-size: 1em;
+    margin-bottom: .5em;
 
 }
 

@@ -52,23 +52,25 @@ app.get("/", function(req, res) {
 app.get("/scrape", function(req, res) {
     axios.get("https://lifehacker.com/").then(function(response) {
         var $ = cheerio.load(response.data);
+
         $(".js_post_item").each(function(i, element) {
-            var title = $(element).children("div").children("a").children("h1").text();
-            var blurb = $(element).children("div").children("div").children("p").text();
+            var title = $(element).children("div").children("div").children("div").children("a").children("h1").text() ? $(element).children("div").children("div").children("div").children("a").children("h1").text() : $(element).children("div").children("div").children("a").children("h1").text()
+            var blurb = $(element).children("div").children("div").children("div").children("a").children("h1").text() ? $(element).children("div").children("div").children("div").children("a").children("h1").text() : $(element).children("div").children("div").children("a").children("h1").text()
+            // var blurb = $(element).children("div").children("div").children("p").text()
             var link = $(element).children("div").children("figure").children("a").attr("href");
-            var author = $(element).children("div").children("div").children("span").children("div").children("a").text();
+            var author = $(element).children("div").children("div").children("div").children("div").children("div").children("a").text() ? $(element).children("div").children("div").children("div").children("div").children("div").children("a").text() : $(element).children("div").children("div").children("div").children("div").children("div").text()
             var date = moment().format("dddd, MMMM Do YYYY", Date.now());
             // Save these results in an object that we'll push into the results array we defined earlier
             console.log("after scrape: ", title, blurb, link, author, date)
             var results = {
-                title: title ? title : "lifehacker.com html stucture has changed",
+                title: title ? title : "lifehacker.com html stucture has changed, please update code",
                 blurb: blurb ? blurb : "Empty blurb",
                 link: link ? link : "Empty link",
-                author: author ? author : "please update code",
+                author: author ? author : "lifehacker.com html stucture has changed, please update code",
                 date: date ? date : "Empty date",
                 note: []
             };
-            console.log("------------- IT BROKE OVER HERE ----------")
+            // console.log("------------- IT BROKE OVER HERE ----------")
             db.Articles.find({title: results.title}).then(match => {
                 if (match.length === 0) {
                     db.Articles.create(results)
@@ -82,7 +84,7 @@ app.get("/scrape", function(req, res) {
             });
         });
     }).then(() => {
-        console.log("------------- IT BROKE OVER HERE ----------")
+        // console.log("------------- IT BROKE OVER HERE ----------")
         res.redirect("/");
     });
 });
