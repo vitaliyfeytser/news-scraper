@@ -61,7 +61,7 @@ app.get("/scrape", function(req, res) {
             var author = $(element).children("div").children("div").children("div").children("div").children("div").children("a").text() ? $(element).children("div").children("div").children("div").children("div").children("div").children("a").text() : $(element).children("div").children("div").children("div").children("div").children("div").text()
             var date = moment().format("dddd, MMMM Do YYYY", Date.now());
             // Save these results in an object that we'll push into the results array we defined earlier
-            console.log("after scrape: ", title, blurb, link, author, date)
+            // console.log("after scrape: ", title, blurb, link, author, date)
             var results = {
                 title: title ? title : "lifehacker.com html stucture has changed, please update code",
                 blurb: blurb ? blurb : "Empty blurb",
@@ -75,14 +75,15 @@ app.get("/scrape", function(req, res) {
                 if (match.length === 0) {
                     db.Articles.create(results)
                         .then(function(dbArticles) {
-                            console.log(dbArticles);
+                            console.log("dbArticles: ", dbArticles);
                         })
                         .catch(function(err) {
-                            console.log(err);
+                            console.log("ERROR: ", err);
                         });
                 }
             });
         });
+        
     }).then(() => {
         // console.log("------------- IT BROKE OVER HERE ----------")
         res.redirect("/");
