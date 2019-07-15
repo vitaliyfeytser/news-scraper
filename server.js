@@ -57,7 +57,7 @@ app.get("/scrape", function(req, res) {
             var title = $(element).children("div").children("div").children("div").children("a").children("h1").text() ? $(element).children("div").children("div").children("div").children("a").children("h1").text() : $(element).children("div").children("div").children("a").children("h1").text()
             var blurb = $(element).children("div").children("div").children("div").children("a").children("h1").text() ? $(element).children("div").children("div").children("div").children("a").children("h1").text() : $(element).children("div").children("div").children("a").children("h1").text()
             // var blurb = $(element).children("div").children("div").children("p").text()
-            var link = $(element).children("div").children("figure").children("a").attr("href");
+            var link = $(element).children("div").children("figure").children("a").attr("href") ? $(element).children("div").children("figure").children("a").attr("href") : $(element).children("div").children("div").children("a").attr("href")
             var author = $(element).children("div").children("div").children("div").children("div").children("div").children("a").text() ? $(element).children("div").children("div").children("div").children("div").children("div").children("a").text() : $(element).children("div").children("div").children("div").children("div").children("div").text()
             var date = moment().format("dddd, MMMM Do YYYY", Date.now());
             // Save these results in an object that we'll push into the results array we defined earlier
@@ -83,7 +83,7 @@ app.get("/scrape", function(req, res) {
                 }
             });
         });
-        
+
     }).then(() => {
         // console.log("------------- IT BROKE OVER HERE ----------")
         res.redirect("/");
